@@ -9,7 +9,21 @@ CREATE TABLE grp (
     type_id integer NOT NULL REFERENCES cvterm
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     is_analysis boolean NOT NULL DEFAULT false,
+    is_obsolete boolean NOT NULL DEFAULT false,
     UNIQUE(uniquename, type_id)
+);
+--Group synonym
+CREATE TABLE grp_synonym (
+    grp_synonym_id serial PRIMARY KEY,
+    is_current boolean NOT NULL DEFAULT true,
+    is_internal boolean NOT NULL DEFAULT false,
+    grp_id integer NOT NULL REFERENCES grp
+      ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+    pub_id integer NOT NULL REFERENCES pub
+      ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+    synonym_id integer NOT NULL REFERENCES synonym
+      ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+    UNIQUE(grp_id, pub_id, synonym_id)
 );
 --Group annotation
 CREATE TABLE grpprop (
