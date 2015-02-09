@@ -5,7 +5,7 @@ CREATE TABLE grp_contact (
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     grp_id integer NOT NULL REFERENCES grp
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    UNIQUE(pub_id, grp_id)
+    UNIQUE(contact_id, grp_id)
 );
 
 --Alter grpmember to track table type
