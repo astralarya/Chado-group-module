@@ -17,14 +17,18 @@ ALTER TABLE organism_grpmember
   DROP CONSTRAINT "organism_grpmember_grpmember_id_organism_id_key",
   ADD COLUMN linking_table information_schema.sql_identifier
     DEFAULT 'organism' CHECK (linking_table = 'organism'),
-  ADD FOREIGN KEY(grpmember_id, linking_table)
-    REFERENCES grpmember(grpmember_id, linking_table),
   ADD UNIQUE(grpmember_id);
 
 ALTER TABLE feature_grpmember
   DROP CONSTRAINT "feature_grpmember_grpmember_id_feature_id_key",
   ADD COLUMN linking_table information_schema.sql_identifier
     DEFAULT 'feature' CHECK (linking_table = 'feature'),
-  ADD FOREIGN KEY(grpmember_id, linking_table)
-    REFERENCES grpmember(grpmember_id, linking_table),
   ADD UNIQUE(grpmember_id);
+
+ALTER TABLE organism_grpmember
+  ADD FOREIGN KEY(grpmember_id, linking_table)
+    REFERENCES grpmember(grpmember_id, linking_table);
+
+ALTER TABLE feature_grpmember
+  ADD FOREIGN KEY(grpmember_id, linking_table)
+    REFERENCES grpmember(grpmember_id, linking_table);
