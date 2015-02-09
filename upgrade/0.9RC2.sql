@@ -10,8 +10,7 @@ CREATE TABLE grp_contact (
 
 --Alter grpmember to track table type
 ALTER TABLE grpmember
-  ADD COLUMN linking_table information_schema.sql_identifier
-    NOT NULL REFERENCES information_schema.tables(table_name);
+  ADD COLUMN linking_table information_schema.sql_identifier NOT NULL;
 
 --Alter xxx_grpmember tables to enforce single member design
 ALTER TABLE organism_grpmember

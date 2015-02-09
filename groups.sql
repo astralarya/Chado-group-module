@@ -150,8 +150,7 @@ CREATE TABLE grpmember (
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     grp_id integer NOT NULL REFERENCES grp
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    linking_table information_schema.sql_identifier
-      NOT NULL REFERENCES information_schema.tables(table_name)
+    linking_table information_schema.sql_identifier NOT NULL,
     UNIQUE(rank, type_id, grp_id)
 );
 --Group member provenance
