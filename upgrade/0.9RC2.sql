@@ -19,7 +19,7 @@ ALTER TABLE organism_grpmember
     DEFAULT 'organism' CHECK (linking_table = 'organism'),
   ADD FOREIGN KEY(grpmember_id, linking_table)
     REFERENCES grpmember(grpmember_id, linking_table),
-  ADD UNIQUE(grpmember_id)
+  ADD UNIQUE(grpmember_id);
 
 ALTER TABLE feature_grpmember
   DROP CONSTRAINT "feature_grpmember_grpmember_id_feature_id_key",
@@ -27,4 +27,4 @@ ALTER TABLE feature_grpmember
     DEFAULT 'feature' CHECK (linking_table = 'feature'),
   ADD FOREIGN KEY(grpmember_id, linking_table)
     REFERENCES grpmember(grpmember_id, linking_table),
-  ADD UNIQUE(grpmember_id)
+  ADD UNIQUE(grpmember_id);
