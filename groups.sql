@@ -172,7 +172,7 @@ CREATE TABLE analysisgrpmember (
     identity double precision,
     analysis_id integer NOT NULL REFERENCES analysis
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    grpmember_id integer NOT NULL REFERENCES grp
+    grpmember_id integer NOT NULL REFERENCES grpmember
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     UNIQUE(analysis_id, grpmember_id)
 );
@@ -202,7 +202,7 @@ CREATE TABLE grpmember_cvterm (
     is_not boolean NOT NULL DEFAULT false,
     cvterm_id integer NOT NULL REFERENCES cvterm
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    grpmember_id integer NOT NULL REFERENCES grp
+    grpmember_id integer NOT NULL REFERENCES grpmember
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     pub_id integer NOT NULL REFERENCES pub
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -216,7 +216,7 @@ CREATE TABLE grpmember_cvterm (
 
 CREATE TABLE organism_grpmember (
     organism_grpmember_id serial PRIMARY KEY,
-    grpmember_id integer NOT NULL REFERENCES grp
+    grpmember_id integer NOT NULL REFERENCES grpmember
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     organism_id integer NOT NULL REFERENCES organism
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -229,7 +229,7 @@ CREATE TABLE organism_grpmember (
 
 CREATE TABLE feature_grpmember (
     feature_grmpmember_id serial PRIMARY KEY,
-    grpmember_id integer NOT NULL REFERENCES grp
+    grpmember_id integer NOT NULL REFERENCES grpmember
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     feature_id integer NOT NULL REFERENCES feature
       ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
